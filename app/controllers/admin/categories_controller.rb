@@ -16,9 +16,18 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def edit
+    @page_title = 'Edit Category'
+    @category = Category.find(params[:id])
   end
 
-  def update
+  def update 
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:notce] = "Category Updated"
+      redirect_to admin_categories_path
+    else
+      render 'update'
+    end
   end
 
   def destroy
