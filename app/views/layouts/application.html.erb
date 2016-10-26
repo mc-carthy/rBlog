@@ -50,19 +50,13 @@
             <%= yield %>
           </div>
           <div class="col-md-4">
-            <div class="list-group">
-              <a href="#" class="list-group-item">News</a>
-              <a href="#" class="list-group-item">Tutorials</a>
-              <a href="#" class="list-group-item">Releases</a>
-              <a href="#" class="list-group-item">Events</a>
-            </div>
+            <%= render 'partials/sidebar' %>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>Copyright &copy; 2016 Mick McCarthy | <a href="login.html">Admin Login</a></footer>
-
+    <%= render 'partials/footer' %>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
