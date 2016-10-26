@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'contacts/new'
+  get 'contact' => 'contacts#new'
 
   get 'contacts/create'
 
-  get 'about/index'
+  get 'about' => 'about#index'
 
   namespace :admin do
     get 'sessions/new'
@@ -109,5 +109,13 @@ Rails.application.routes.draw do
 
   get 'posts/show'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :posts, :categories, :comments
+  resources "contacts", only: [:new, :create]
+
+  namespace :admin do
+    resources :posts, :categories, :comments, :users
+  end
+
+  root 'posts#index'
+
 end
