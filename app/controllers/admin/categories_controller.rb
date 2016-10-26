@@ -23,7 +23,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def update 
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:notce] = "Category Updated"
+      flash[:notice] = "Category Updated"
       redirect_to admin_categories_path
     else
       render 'update'
@@ -31,6 +31,11 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+
+    flash[:notice] = "Category Removed"
+    redirect_to admin_categories_path
   end
 
   def index
