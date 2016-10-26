@@ -1,5 +1,7 @@
 class Admin::CategoriesController < Admin::ApplicationController
   def new
+    @page_title = 'Add Category'
+    @category = Category.new
   end
 
   def create
