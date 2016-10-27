@@ -1,56 +1,21 @@
-<div class="row">
-  <div class="col-md-6">
-    <div class="post">
-      <img src="img/rails1.jpg">
-      <div class="post-content">
-        <h3>Startup Ipsum</h3>
-        <small>Posted by Mick on October 26th 2016</small>
-        <p>Grok entrepreneur grok ideate intuitive disrupt actionable insight pair programming. Ideate pivot hacker engaging grok actionable insight user centered design sticky note long shadow. Personas pitch deck user centered design waterfall is so 2000 and late affordances pivot co-working sticky note SpaceTeam viral piverate cortado. Thinker-maker-doer cortado thinker-maker-doer ship it fund quantitative vs. qualitative personas sticky note user story physical computing ideate user centered design parallax. Thought leader hacker food-truck user story earned media human-centered design engaging user story innovate.</p>
-
-        <p>Long shadow Steve Jobs iterate Steve Jobs pitch deck user centered design innovate pair programming experiential. Intuitive long shadow sticky note SpaceTeam human-centered design iterate latte actionable insight big data food-truck. Responsive hacker latte human-centered design affordances grok 360 campaign workflow food-truck human-centered design responsive innovate. Thinker-maker-doer earned media SpaceTeam driven physical computing latte entrepreneur quantitative vs. qualitative moleskine innovate sticky note user centered design. Intuitive pitch deck pair programming driven disrupt food-truck integrate sticky note disrupt workflow pitch deck physical computing hacker.</p>
-        <a class="btn btn-primary btn-block">Read More</a>
+<div id="posts-index">
+  <% if @posts.exists? %>
+    <% @posts.each_slice(2) do |post| %>
+      <div class="row">
+        <% post.each do |post| %>
+          <div class='col-md-6'>
+            <div class="post">
+              <%= image_tag post.image.url, width:'100%' %>
+              <div class="post-content">
+                <h3><%= post.title %></h3>
+                <small>Posted by <%= post.user.name %> on <%= post.created_at.to_time.strftime('%B %e at %l:%M:%p') %></small>
+                <%= raw post.body.truncate(200) %>
+                <%= link_to "Read More", post_path(post), class:'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="post">
-      <img src="img/rails1.jpg">
-      <div class="post-content">
-        <h3>Startup Ipsum</h3>
-        <small>Posted by Mick on October 26th 2016</small>
-        <p>Disrupt pair programming iterate latte hacker parallax viral user centered design personas waterfall is so 2000 and late physical computing bootstrapping convergence. Sticky note bootstrapping latte intuitive earned media physical computing physical computing intuitive actionable insight SpaceTeam driven. Venture capital human-centered design latte venture capital big data pivot pitch deck waterfall is so 2000 and late quantitative vs. qualitative earned media pitch deck. Experiential human-centered design disrupt latte earned media driven ship it actionable insight.</p>
-        
-        <p>Venture capital user centered design long shadow integrate disrupt minimum viable product physical computing convergence earned media latte long shadow innovate. Minimum viable product prototype ship it quantitative vs. qualitative pitch deck co-working long shadow intuitive innovate hacker. Cortado affordances paradigm hacker disrupt paradigm intuitive thinker-maker-doer user centered design experiential long shadow. SpaceTeam user centered design viral paradigm big data quantitative vs. qualitative minimum viable product disrupt driven paradigm innovate paradigm innovate quantitative vs. qualitative.</p>
-        <a class="btn btn-primary btn-block">Read More</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="post">
-      <img src="img/rails1.jpg">
-      <div class="post-content">
-        <h3>Startup Ipsum</h3>
-        <small>Posted by Mick on October 26th 2016</small>
-        <p>Grok entrepreneur grok ideate intuitive disrupt actionable insight pair programming. Ideate pivot hacker engaging grok actionable insight user centered design sticky note long shadow. Personas pitch deck user centered design waterfall is so 2000 and late affordances pivot co-working sticky note SpaceTeam viral piverate cortado. Thinker-maker-doer cortado thinker-maker-doer ship it fund quantitative vs. qualitative personas sticky note user story physical computing ideate user centered design parallax. Thought leader hacker food-truck user story earned media human-centered design engaging user story innovate.</p>
-
-        <p>Long shadow Steve Jobs iterate Steve Jobs pitch deck user centered design innovate pair programming experiential. Intuitive long shadow sticky note SpaceTeam human-centered design iterate latte actionable insight big data food-truck. Responsive hacker latte human-centered design affordances grok 360 campaign workflow food-truck human-centered design responsive innovate. Thinker-maker-doer earned media SpaceTeam driven physical computing latte entrepreneur quantitative vs. qualitative moleskine innovate sticky note user centered design. Intuitive pitch deck pair programming driven disrupt food-truck integrate sticky note disrupt workflow pitch deck physical computing hacker.</p>
-        <a class="btn btn-primary btn-block">Read More</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="post">
-      <img src="img/rails1.jpg">
-      <div class="post-content">
-        <h3>Startup Ipsum</h3>
-        <small>Posted by Mick on October 26th 2016</small>
-        <p>Disrupt pair programming iterate latte hacker parallax viral user centered design personas waterfall is so 2000 and late physical computing bootstrapping convergence. Sticky note bootstrapping latte intuitive earned media physical computing physical computing intuitive actionable insight SpaceTeam driven. Venture capital human-centered design latte venture capital big data pivot pitch deck waterfall is so 2000 and late quantitative vs. qualitative earned media pitch deck. Experiential human-centered design disrupt latte earned media driven ship it actionable insight.</p>
-        
-        <p>Venture capital user centered design long shadow integrate disrupt minimum viable product physical computing convergence earned media latte long shadow innovate. Minimum viable product prototype ship it quantitative vs. qualitative pitch deck co-working long shadow intuitive innovate hacker. Cortado affordances paradigm hacker disrupt paradigm intuitive thinker-maker-doer user centered design experiential long shadow. SpaceTeam user centered design viral paradigm big data quantitative vs. qualitative minimum viable product disrupt driven paradigm innovate paradigm innovate quantitative vs. qualitative.</p>
-        <a class="btn btn-primary btn-block">Read More</a>
-      </div>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>
