@@ -39,7 +39,11 @@ def new
   end
 
   def index
-    @posts = Post.all
+    if params[:search]
+      @posts = Post.search(params[:search]).all.order('created_at DESC')
+    else
+      @posts = Post.all.order('created_at DESC')
+    end
   end
 
   def show

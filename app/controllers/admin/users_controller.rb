@@ -39,7 +39,11 @@ def new
   end
 
   def index
-    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search]).all.order('created_at DESC')
+    else
+      @users = User.all.order('created_at DESC')
+    end
   end
 
   def show
