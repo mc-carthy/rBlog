@@ -7,6 +7,10 @@ def new
   def create
     @post = Post.new(post_params)
 
+    if params[:post][:image].blank?
+      @post.image = nil
+    end
+
     if @post.save
       flash[:notice] = 'Post Created Successfully'
       redirect_to admin_posts_path
@@ -22,6 +26,11 @@ def new
 
   def update 
     @post = Post.find(params[:id])
+
+    if params[:post][:image].blank?
+      @post.image = nil
+    end
+
     if @post.update(post_params)
       flash[:notice] = "Post Updated"
       redirect_to admin_posts_path
