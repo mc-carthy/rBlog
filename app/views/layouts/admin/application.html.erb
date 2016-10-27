@@ -36,7 +36,18 @@
         <div class="row">
           <div class="col-md-12">
             <div class="well">
-            <!-- Alerts & notices -->
+              <div>
+                <div id="user_nav" class="pull-right">
+                  <% if current_user %>
+                    Logged in as <%= current_user.email %>
+                    <%= link_to "Log Out", admin_logout_path %>
+                  <% else %>
+                    <%= link_to "Log In", admin_login_path %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <!-- Alerts & Notices -->
               <% if flash[:notice] %>
                 <div class="alert alert-success"><%= flash[:notice] %></div>
               <% end %>
